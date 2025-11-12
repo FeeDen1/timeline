@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css2?family=PT+Sans:wght@400;700&family=Bebas+Neue&display=swap');
+
+:root {
+  //Шрифты
+  --font-family-main: 'PT Sans', sans-serif;
+  --font-family-alt: 'Bebas Neue', sans-serif;
+
+  //Жирность шрифтов
+  --font-weight-regular: 400;
+  --font-weight-bold: 700;
+
+ //Цвета
+  --clr-iris-100: #3877EE;       /* синий */
+  --clr-fuschia-100: #EF5DA8;    /* розовый */
+  --clr-black-blue: #42567A;
+  --clr-bg-light: #F4F5F9;
+  --btn-hover: #EFEFEF;
+  --border-color: rgba(66, 86, 122, 0.3);
+
+  //Градиент
+  --gradient-iris-fuschia: linear-gradient(180deg, #3877EE 0%, #EF5DA8 100%);
+}

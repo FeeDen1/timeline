@@ -1,0 +1,123 @@
+
+.wrapper {
+  position: relative;
+  max-width: 1440px;
+  height: 100dvh;
+  margin: 0 auto;
+  padding: 80px 80px;
+  background: var(--clr-bg-light);
+  color: var(--clr-black-blue);
+}
+
+/* длинная вертикальная линия сбоку */
+.wrapper::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  width: 1px;
+  background: var(--clr-black-blue);
+  border-radius: 2px;
+  opacity: 10%;
+}
+
+.wrapper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 1439px;
+  width: 1px;
+  background: var(--clr-black-blue);
+  border-radius: 2px;
+  opacity: 10%;
+}
+
+
+
+/* === Заголовок блока === */
+.title {
+  position: relative;
+  max-width: 350px;
+  font-weight: var(--font-weight-bold);
+  font-size: 56px;
+  line-height: 120%;
+  color: var(--clr-black-blue);
+
+  /* Акцентная полоса слева */
+  &::before {
+    content: '';
+    position: absolute;
+    left: -80px;
+    top: 8px;
+    width: 6px;
+    height: 120px;
+    background: var(--gradient-iris-fuschia);
+    border-radius: 3px;
+  }
+}
+
+/* === Верхняя часть: большие даты и круг === */
+.centerStage {
+  position: relative;
+  top: -95px;
+  height: 610px;           /* близко к макету */
+  width: 100%;
+  z-index: 2;
+}
+
+/* тонкие вертикальная/горизонтальная линии через центр */
+.gridV, .gridH {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  pointer-events: none;
+  background: var(--clr-black-blue);
+  opacity: 10%;
+  z-index: 1;
+}
+.gridV {
+  width: 1px;
+  height: 1300px;
+  transform: translate(0, -50%);
+}
+.gridH {
+  height: 1px;
+  width: 1440px;
+  transform: translate(-50%, -50%);
+}
+
+/* слой с кругом — под цифрами */
+.circleLayer {
+  position: absolute;
+  left: 50%;
+  top: 45%;
+  transform: translate(-50%, -50%);
+  width: 560px;  /* размер твоего круга */
+  height: 560px;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+}
+
+/* слой с годами — над кругом и по центру */
+.yearsLayer {
+  position: absolute;
+  inset: 0;
+  top: -65px;
+  display: grid;
+  place-items: center;
+  z-index: 2;
+  pointer-events: none;
+}
+
+
+/* === Нижняя часть со слайдером событий === */
+.bottom {
+
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: flex-end;
+}

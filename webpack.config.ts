@@ -12,6 +12,7 @@ export default (env: BuildEnv) => {
         src: path.resolve(__dirname, 'src')
     }
 
+
     const mode = env.mode || 'development'
     const isDev = mode === 'development'
     const PORT= env.port || 3000
@@ -23,5 +24,6 @@ export default (env: BuildEnv) => {
         isDev,
         port: PORT
     })
+
     return config
 }

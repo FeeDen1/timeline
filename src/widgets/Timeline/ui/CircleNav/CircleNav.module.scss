@@ -1,0 +1,86 @@
+
+
+.circleWrapper {
+  position: relative;
+  width: 540px;
+  height: 540px;
+}
+
+
+.circle {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  border: 1px solid rgba(66, 86, 122, 0.15);
+  transform-origin: center center;
+  --circle-rotation: 0deg;
+  --circle-text-rotation: 0deg;
+}
+
+/* базовые точки */
+.dot {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--clr-black-blue);
+  border: none;
+  cursor: pointer;
+  transform: translate(-50%, -50%);
+  transition: all 0.3s ease;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  > span {
+    display: none;
+    transform: rotate(var(--circle-text-rotation));
+    color: var(--clr-black-blue);
+    font-size: 14px;
+    font-weight: var(--font-weight-bold);
+  }
+
+  &:hover:not(.active) {
+    width: 32px;
+    height: 32px;
+    border: 1px solid var(--clr-black-blue);
+    background-color: var(--clr-bg-light);
+    opacity: 0.8;
+
+    > span {
+      display: block;
+    }
+  }
+}
+
+/* активная точка */
+.active {
+  width: 56px;
+  height: 56px;
+  background: var(--clr-bg-light);
+  border: 0.5px solid var(--border-color);
+  color: var(--clr-black-blue);
+  z-index: 5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  > span {
+    display: block;
+  }
+}
+
+/* статичный label в правом верхнем углу */
+.label {
+  position: absolute;
+  top: 20px;
+  left: calc(50% + 180px);
+  font-size: 25px;
+  color: var(--clr-black-blue);
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
