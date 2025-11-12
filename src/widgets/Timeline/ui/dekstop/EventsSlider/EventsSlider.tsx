@@ -3,7 +3,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import gsap from 'gsap';
 import cls from './EventsSlider.module.scss';
-import type { TimelineEvent } from '../../model/types';
+import {TimelineEvent} from "../../../model/types";
 
 interface EventsSliderProps {
     events: TimelineEvent[];
@@ -13,7 +13,6 @@ export const EventsSlider = ({ events }: EventsSliderProps) => {
     const swiperRef = useRef<any>(null);
     const wrapperRef = useRef<HTMLDivElement>(null);
 
-    // 🔸 Рендерим не props.events, а зафиксированную локально версию
     const [renderedEvents, setRenderedEvents] = useState(events);
     const [swiperKey, setSwiperKey] = useState(0);
 
@@ -28,9 +27,7 @@ export const EventsSlider = ({ events }: EventsSliderProps) => {
     const handlePrev = () => swiperRef.current?.slidePrev();
     const handleNext = () => swiperRef.current?.slideNext();
 
-    // 🧭 когда пришёл новый props.events — сначала прячем старые карточки
     useEffect(() => {
-        // если список фактически не изменился, ничего не делаем
         const oldIds = renderedEvents.map((e) => e.id).join(',');
         const newIds = events.map((e) => e.id).join(',');
         if (oldIds === newIds) return;
@@ -52,22 +49,18 @@ export const EventsSlider = ({ events }: EventsSliderProps) => {
             stagger: 0.05,
             ease: 'power1.out',
             onComplete: () => {
-                // 👉 только после полного исчезновения меняем данные
                 setRenderedEvents(events);
-                setSwiperKey((k) => k + 1);        // пересоздаём swiper, чтобы встать в начало
+                setSwiperKey((k) => k + 1);
                 setCanPrev(false);
                 setCanNext(events.length > 3);
             },
         });
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [events]);
 
-    // ✨ анимация появления новых карточек (срабатывает после смены renderedEvents)
+
     useEffect(() => {
         const slides = wrapperRef.current?.querySelectorAll(`.${cls.slide}`);
         if (!slides || slides.length === 0) return;
-
-        // сразу ставим стартовые значения, чтобы не было «моргания»
         gsap.set(slides, { opacity: 0, y: 20 });
         gsap.to(slides, {
             opacity: 1,
@@ -91,7 +84,7 @@ export const EventsSlider = ({ events }: EventsSliderProps) => {
             )}
 
             <Swiper
-                key={swiperKey}                            // сбрасываем позицию и внутреннее состояние
+                key={swiperKey}
                 onSwiper={(swiper) => (swiperRef.current = swiper)}
                 slidesPerView={3}
                 spaceBetween={64}
@@ -106,7 +99,6 @@ export const EventsSlider = ({ events }: EventsSliderProps) => {
                     </SwiperSlide>
                 ))}
             </Swiper>
-
             {canNext && (
                 <button
                     className={`${cls.navBtn} ${cls.nextBtn}`}

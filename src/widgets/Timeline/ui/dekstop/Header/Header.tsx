@@ -1,17 +1,15 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import cls from './Header.module.scss';
-import type { TimelineInterval } from '../../model/types';
+import {TimelineInterval} from "../../../model/types";
 
 interface HeaderProps {
-    interval: TimelineInterval; // { start: number; end: number }
+    interval: TimelineInterval;
 }
 
 export const Header = ({ interval }: HeaderProps) => {
     const leftRef = useRef<HTMLSpanElement>(null);
     const rightRef = useRef<HTMLSpanElement>(null);
-
-    // запоминаем предыдущие значения (именно они будут "from")
     const prev = useRef({ start: interval.startYear, end: interval.endYear });
 
     useEffect(() => {
@@ -20,7 +18,6 @@ export const Header = ({ interval }: HeaderProps) => {
         const fromEnd = prev.current.end;
         const toEnd = interval.endYear;
 
-        // прокси-объекты, которые будет твинить GSAP
         const left = { value: fromStart };
         const right = { value: fromEnd };
 
@@ -30,14 +27,12 @@ export const Header = ({ interval }: HeaderProps) => {
         const format = (v: number, inc: boolean) =>
             (inc ? Math.floor(v) : Math.ceil(v)).toString();
 
-        // сразу установить видимые начальные числа (без мигания)
         if (leftRef.current) leftRef.current.textContent = format(fromStart, startIncreasing);
         if (rightRef.current) rightRef.current.textContent = format(fromEnd, endIncreasing);
 
         const ctx = gsap.context(() => {
             const tl = gsap.timeline();
 
-            // левая часть: из prev → в текущий interval
             tl.fromTo(
                 left,
                 { value: fromStart },
@@ -53,7 +48,6 @@ export const Header = ({ interval }: HeaderProps) => {
                 }
             );
 
-            // правая часть — параллельно
             tl.fromTo(
                 right,
                 { value: fromEnd },
@@ -71,7 +65,6 @@ export const Header = ({ interval }: HeaderProps) => {
             );
         });
 
-        // важно: обновляем prev ТОЛЬКО после запуска анимаций
         prev.current = { start: toStart, end: toEnd };
 
         return () => ctx.revert();

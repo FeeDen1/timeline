@@ -1,8 +1,9 @@
 import { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import cls from './CircleNav.module.scss';
-import type { TimelineInterval } from '../../model/types';
-import { calcDotPosition } from '../../lib/calcDotPosition';
+import {TimelineInterval} from "../../../model/types";
+import {calcDotPosition} from "../../../lib/calcDotPosition";
+
 
 interface CircleNavProps {
     intervals: TimelineInterval[];
@@ -15,7 +16,6 @@ export const CircleNav = ({ intervals, activeIndex, onChange }: CircleNavProps) 
     const labelRef = useRef<HTMLDivElement>(null);
     const rotation = useRef(0);
 
-    // вращение круга
     useEffect(() => {
         if (!circleRef.current) return;
 
@@ -30,15 +30,14 @@ export const CircleNav = ({ intervals, activeIndex, onChange }: CircleNavProps) 
             transformOrigin: 'center center',
             onUpdate: () => {
                 const currentRot = gsap.getProperty(circleRef.current!, 'rotation') as number;
-                circleRef.current!.style.setProperty('--circle-rotation', `${currentRot}deg`);
-                circleRef.current!.style.setProperty('--circle-text-rotation', `${-currentRot}deg`);
+                circleRef.current?.style.setProperty('--circle-rotation', `${currentRot}deg`);
+                circleRef.current?.style.setProperty('--circle-text-rotation', `${-currentRot}deg`);
             },
         });
 
         rotation.current = targetAngle;
     }, [activeIndex, intervals.length]);
 
-    // плавная смена label
     useEffect(() => {
         if (!labelRef.current) return;
         const tl = gsap.timeline();
@@ -74,7 +73,6 @@ export const CircleNav = ({ intervals, activeIndex, onChange }: CircleNavProps) 
                 })}
             </div>
 
-            {/* статичный label */}
             <div ref={labelRef} className={cls.label}>
                 {intervals[activeIndex].label}
             </div>

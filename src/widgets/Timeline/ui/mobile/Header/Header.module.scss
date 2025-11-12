@@ -1,0 +1,23 @@
+
+.years {
+  display: flex;
+  align-items: baseline;
+  width: 100dvw;
+  justify-content: space-evenly;
+  margin-bottom: 16px;
+
+  span {
+    font-weight: var(--font-weight-bold);
+    font-size: 70px;
+    line-height: 120%;
+    text-transform: uppercase;
+  }
+
+  .left {
+    color: var(--clr-iris-100); /* синий */
+  }
+
+  .right {
+    color: var(--clr-fuschia-100); /* розовый */
+  }
+}

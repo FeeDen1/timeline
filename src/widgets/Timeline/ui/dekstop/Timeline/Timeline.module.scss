@@ -9,7 +9,6 @@
   color: var(--clr-black-blue);
 }
 
-/* длинная вертикальная линия сбоку */
 .wrapper::before {
   content: '';
   position: absolute;
@@ -34,9 +33,6 @@
   opacity: 10%;
 }
 
-
-
-/* === Заголовок блока === */
 .title {
   position: relative;
   max-width: 350px;
@@ -45,7 +41,6 @@
   line-height: 120%;
   color: var(--clr-black-blue);
 
-  /* Акцентная полоса слева */
   &::before {
     content: '';
     position: absolute;
@@ -58,16 +53,14 @@
   }
 }
 
-/* === Верхняя часть: большие даты и круг === */
 .centerStage {
   position: relative;
   top: -95px;
-  height: 610px;           /* близко к макету */
+  height: 610px;
   width: 100%;
   z-index: 2;
 }
 
-/* тонкие вертикальная/горизонтальная линии через центр */
 .gridV, .gridH {
   position: absolute;
   left: 50%;
@@ -88,20 +81,18 @@
   transform: translate(-50%, -50%);
 }
 
-/* слой с кругом — под цифрами */
 .circleLayer {
   position: absolute;
   left: 50%;
   top: 45%;
   transform: translate(-50%, -50%);
-  width: 560px;  /* размер твоего круга */
+  width: 560px;
   height: 560px;
   display: grid;
   place-items: center;
   z-index: 3;
 }
 
-/* слой с годами — над кругом и по центру */
 .yearsLayer {
   position: absolute;
   inset: 0;
@@ -113,9 +104,7 @@
 }
 
 
-/* === Нижняя часть со слайдером событий === */
 .bottom {
-
   display: flex;
   flex-direction: column;
   height: 100%;

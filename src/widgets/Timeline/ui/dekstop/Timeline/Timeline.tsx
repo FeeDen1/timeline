@@ -1,10 +1,12 @@
 import { useState } from 'react';
 import cls from './Timeline.module.scss'
-import {TimelineInterval} from "../../model/types";
+
 import {Header} from "../Header/Header";
 import {CircleNav} from "../CircleNav/CircleNav";
 import {EventsSlider} from "../EventsSlider/EventsSlider";
-import {TimelineStepper} from "../../../../features/Timeline-stepper/ui/TimelineStepper";
+import {TimelineInterval} from "../../../model/types";
+import {TimelineStepper} from "../../../../../features/Timeline-stepper/ui/TimelineStepper";
+
 
 export interface TimelineProps {
     title?: string;
@@ -20,7 +22,6 @@ export const Timeline = (props: TimelineProps) => {
     return (
         <section className={cls.wrapper}>
             {title && <h2 className={cls.title}>{title}</h2>}
-
             <div className={cls.centerStage}>
                 <div className={cls.circleLayer} aria-hidden="true">
                     <CircleNav
@@ -33,8 +34,6 @@ export const Timeline = (props: TimelineProps) => {
                 <div className={cls.yearsLayer}>
                     <Header interval={activeInterval}/>
                 </div>
-
-                {/* тонкие линии сетки как в макете */}
                 <span className={cls.gridV}/>
                 <span className={cls.gridH}/>
                 <div className={cls.bottom}>

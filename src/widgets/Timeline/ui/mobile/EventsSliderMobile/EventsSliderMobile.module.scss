@@ -1,0 +1,80 @@
+.mobileWrapper {
+  position: relative;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+.swiper {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.swiperSlide {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.slide {
+  width: 100%;
+  padding: 0 4px;
+  text-align: left;
+  word-wrap: break-word;
+  overflow-wrap: anywhere;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+.slideYear {
+  font-size: 20px;
+  line-height: 120%;
+  font-family: var(--font-family-alt);
+  color: var(--clr-iris-100);
+  margin-bottom: 20px;
+  font-weight: 100
+}
+
+.slideText {
+  font-size: 20px;
+  line-height: 140%;
+  color: var(--clr-black-blue);
+  white-space: normal;
+  max-width: 100%;
+}
+
+.dotsWrapper {
+  margin-top: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dots {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+}
+
+.dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.dotActive {
+  background: var(--clr-black-blue);
+  transform: scale(1.25);
+}

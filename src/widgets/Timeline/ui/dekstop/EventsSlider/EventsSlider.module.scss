@@ -1,4 +1,4 @@
-@use '../../../../app/styles/variables/global' as *;
+
 
 .sliderWrapper {
   position: relative;
@@ -29,7 +29,6 @@
   color: var(--clr-black-blue);
 }
 
-/* ===== Стрелки ===== */
 .navBtn {
   position: absolute;
   top: 50%;
