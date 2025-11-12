@@ -8,7 +8,7 @@ export function buildCssLoader(isDev: boolean) {
             {
                 loader: 'css-loader',
                 options: {
-                    esModule: false, // 👈 ключевое изменение
+                    esModule: false,
                     modules: {
                         auto: true,
                         localIdentName: isDev

@@ -9,7 +9,7 @@ import {TimelineStepper} from "../../../../../features/Timeline-stepper/ui/Timel
 
 
 export interface TimelineProps {
-    title?: string;
+    title: string;
     intervals: TimelineInterval[];
 }
 
@@ -17,11 +17,9 @@ export const Timeline = (props: TimelineProps) => {
     const {title, intervals} = props;
     const [activeIndex, setActiveIndex] = useState(0);
     const activeInterval = intervals[activeIndex];
-
-    console.log('CLS', cls);
     return (
         <section className={cls.wrapper}>
-            {title && <h2 className={cls.title}>{title}</h2>}
+            <h2 className={cls.title}>{title}</h2>
             <div className={cls.centerStage}>
                 <div className={cls.circleLayer} aria-hidden="true">
                     <CircleNav

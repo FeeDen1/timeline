@@ -13,8 +13,6 @@ interface TimelineMobileProps {
 export const TimelineMobile = ({ title, intervals }: TimelineMobileProps) => {
     const [activeIndex, setActiveIndex] = useState(0);
     const activeInterval = intervals[activeIndex];
-    console.log('Active interval:', activeInterval);
-
     return (
         <section className={cls.wrapper}>
             <h2 className={cls.title}>{title}</h2>

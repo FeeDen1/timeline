@@ -7,7 +7,7 @@ export interface TimelineEvent {
 
 export interface TimelineInterval {
     id: string;
-    label: string;       // подпись ("Наука" и т.п.)
+    label: string;
     startYear: number;
     endYear: number;
     events: TimelineEvent[];
